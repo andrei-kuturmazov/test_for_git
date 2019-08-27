@@ -1,10 +1,10 @@
 public class Factorial {
     public static void main(String[] args) {
-        System.out.println(factorial(4));
+        System.out.println(factorial(25));
     }
 
 
-    public static int factorial (int a) {
+    public static long factorial (long a) {
         if (a == 1) {
             return 1;
         }
