@@ -3,6 +3,7 @@ public class Application {
 
             Man man = new Man(15, "Vasia", 7);
             System.out.println(man);
+            man.swim();
 
     }
 }

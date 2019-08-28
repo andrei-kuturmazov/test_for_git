@@ -3,7 +3,6 @@ public class Factorial {
         System.out.println(factorial(20));
     }
 
-
     public static long factorial (long a) {
             if (a == 1) {
                 return 1;
