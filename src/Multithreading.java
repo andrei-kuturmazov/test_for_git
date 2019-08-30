@@ -1,7 +1,7 @@
 public class Multithreading {
     public static void main(String[] args) throws InterruptedException {
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         MyThread firstThread = new MyThread();
         MyThread secondThread = new MyThread();
         firstThread.start();
