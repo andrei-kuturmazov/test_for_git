@@ -7,9 +7,21 @@ public class Multithreading {
         firstThread.start();
         secondThread.start();
 
+        Thread runner = new Thread(new ThreadRunner());
+        runner.start();
        }
 
     }
+
+
+class ThreadRunner implements Runnable {
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 50; i++)
+            System.out.println("Hello everyone from this class " + i);
+    }
+}
 
 
 
