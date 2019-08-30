@@ -3,22 +3,21 @@ public class Multithreading {
 
 
         MyThread firstThread = new MyThread();
+        MyThread secondThread = new MyThread();
         firstThread.start();
+        secondThread.start();
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Hello world from class main");
-
-        }
+       }
 
     }
-}
+
 
 
 class MyThread extends Thread {
     @Override
     public void run() {
-        for (int i =0; i < 50; i++ ) {
-            System.out.println("Hello world from thread");
+        for (int i =0; i < 1000; i++ ) {
+            System.out.println("Hello world from thread, integer value is " + i);
         }
     }
 }
