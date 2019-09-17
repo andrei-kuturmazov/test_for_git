@@ -17,7 +17,7 @@ class Worker {
     public void addToList1() {
 
             try {
-                Thread.sleep(5);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -36,7 +36,7 @@ class Worker {
 
 
     public void work () {
-        for (int i = 0; i <100; i++) {
+        for (int i = 0; i <1000; i++) {
             addToList1();
             addToList2();
         }
@@ -44,14 +44,35 @@ class Worker {
 
     public void main () {
         long before = System.currentTimeMillis();
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                work();
+            }
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                work();
+            }
+        });
 
-        work();
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         long after = System.currentTimeMillis();
         System.out.println("Time spent " + (after-before) + " ms");
 
-        System.out.println(list1);
-        System.out.println(list2);
+        System.out.println("List size is " + list1.size());
+        System.out.println("List size is " + list2.size());
 
     }
 }
