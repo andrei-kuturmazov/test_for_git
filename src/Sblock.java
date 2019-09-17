@@ -14,7 +14,7 @@ class Worker {
     List<Integer> list1 = new ArrayList<>();
     List<Integer> list2 = new ArrayList<>();
 
-    public void addToList1() {
+    public synchronized void addToList1() {
 
             try {
                 Thread.sleep(1);
@@ -25,7 +25,7 @@ class Worker {
         }
 
 
-    public void addToList2() {
+    public synchronized void addToList2() {
         try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
@@ -35,7 +35,7 @@ class Worker {
         }
 
 
-    public void work () {
+    public  void work () {
         for (int i = 0; i <1000; i++) {
             addToList1();
             addToList2();
