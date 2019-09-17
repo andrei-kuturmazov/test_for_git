@@ -5,17 +5,20 @@ import java.util.Random;
 public class Sblock {
     public static void main(String[] args) {
     new Worker().main();
+
     }
 }
 
-
 class Worker {
+
+    Object lock1 = new Object();
+    Object lock2 = new Object();
     Random random = new Random();
     List<Integer> list1 = new ArrayList<>();
     List<Integer> list2 = new ArrayList<>();
 
-    public synchronized void addToList1() {
-
+    public void addToList1() {
+        synchronized (lock1) {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -23,17 +26,18 @@ class Worker {
             }
             list1.add(random.nextInt(100));
         }
+    }
 
-
-    public synchronized void addToList2() {
-        try {
-                Thread.sleep(5);
+    public void addToList2() {
+        synchronized (lock2) {
+            try {
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             list2.add(random.nextInt(100));
         }
-
+    }
 
     public  void work () {
         for (int i = 0; i <1000; i++) {
