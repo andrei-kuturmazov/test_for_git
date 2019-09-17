@@ -13,7 +13,6 @@ public class Volatile {
         test.shutdown();
     }
 
-
 }
 
 
